@@ -40,4 +40,19 @@ public class ClientTest extends TestCase {
             System.setIn(stdin);
         }
     }
+
+    public void testGetUserName() {
+        //given:
+        String name = "name\r\n";
+        InputStream stdin = System.in;
+
+        //then:
+        try {
+            System.setIn(new ByteArrayInputStream(name.getBytes()));
+            Scanner scanner = new Scanner(System.in);
+            assertThat(Client.getUserName(scanner), is(equalTo("name")));
+        } finally {
+            System.setIn(stdin);
+        }
+    }
 }

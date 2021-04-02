@@ -69,7 +69,7 @@ public class Client {
                         message.getBytes(StandardCharsets.UTF_8)));
     }
 
-    private static String getUserName(Scanner scanner) {
+    static String getUserName(Scanner scanner) {
         System.out.print("Введите Ваше имя: ");
         return scanner.nextLine();
     }
