@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class Logger {
     private static Logger instance;
-    SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 
     private Logger() {
     }
@@ -20,13 +20,11 @@ public class Logger {
     }
 
     public void log(String msg) {
-        try(FileWriter writer = new FileWriter("file.log", true))
-        {
+        try (FileWriter writer = new FileWriter("file.log", true)) {
             Date date = new Date(System.currentTimeMillis());
             writer.write("[" + formatter.format(date) + "] " + msg + "\n");
             writer.flush();
-        }
-        catch(IOException ex){
+        } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
     }
